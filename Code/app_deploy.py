@@ -38,7 +38,7 @@ def preprocess_text(text):
 # ✅ Load model and vectorizer
 @st.cache_resource
 def load_model_and_vectorizer():
-    model = joblib.load("multinomial_nb_model.pkl")
+    model = joblib.load("mlp_classifier_model.pkl")
     vectorizer = joblib.load("vectorizer.pkl")
     return model, vectorizer
 
