@@ -14,7 +14,7 @@ nltk.download('wordnet')
 
 # Page config
 st.set_page_config(
-    page_title="Neon Spam Classifier",
+    page_title="Email Spam Classifier",
     layout="centered",
     initial_sidebar_state="auto"
 )
