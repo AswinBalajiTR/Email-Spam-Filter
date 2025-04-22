@@ -1,3 +1,11 @@
+import streamlit as st
+import joblib
+import os
+import re
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
 import joblib
 import sklearn
 
