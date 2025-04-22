@@ -6,15 +6,25 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-import joblib
-import sklearn
-
 import os
+import streamlit as st
+import joblib
 
+# Set correct path assuming app_deploy.py is inside "Code" and model is also there
 BASE_DIR = os.path.dirname(__file__)
-MODEL_PATH = os.path.join(BASE_DIR, "Code", "mlp_classifier_model.pkl")
-VECTORIZER_PATH = os.path.join(BASE_DIR, "Code", "vectorizer.pkl")
+MODEL_PATH = os.path.join(BASE_DIR, "mlp_classifier_model.pkl")
+VECTORIZER_PATH = os.path.join(BASE_DIR, "vectorizer.pkl")
 
+# Logging to debug
+st.write("📁 Current Directory:", BASE_DIR)
+st.write("📄 Files:", os.listdir(BASE_DIR))
+
+# File check
+if not os.path.exists(MODEL_PATH) or not os.path.exists(VECTORIZER_PATH):
+    st.error("🚫 MLP model or vectorizer file not found. Please check file names or paths.")
+    st.stop()
+
+# Load model & vectorizer
 model = joblib.load(MODEL_PATH)
 vectorizer = joblib.load(VECTORIZER_PATH)
 
