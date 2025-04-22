@@ -14,6 +14,10 @@ import os
 MODEL_PATH = "mlp_classifier_model.pkl"
 VECTORIZER_PATH = "vectorizer.pkl"
 
+
+st.write("📂 Current Working Directory:", os.getcwd())
+st.write("📄 Files in Directory:", os.listdir())
+
 if not os.path.exists(MODEL_PATH) or not os.path.exists(VECTORIZER_PATH):
     st.error("🚫 Model or vectorizer file not found. Please upload both `spam_classifier.pkl` and `vectorizer.pkl`.")
     st.stop()
