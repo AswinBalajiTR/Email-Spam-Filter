@@ -11,9 +11,10 @@ import streamlit as st
 import joblib
 
 # Set correct path assuming app_deploy.py is inside "Code" and model is also there
+
 BASE_DIR = os.path.dirname(__file__)
-MODEL_PATH = os.path.join(BASE_DIR, "mlp_classifier_model.pkl")
-VECTORIZER_PATH = os.path.join(BASE_DIR, "vectorizer.pkl")
+model = joblib.load(os.path.join(BASE_DIR, "mlp_classifier_model.pkl"))
+vectorizer = joblib.load(os.path.join(BASE_DIR, "vectorizer.pkl"))
 
 # Logging to debug
 st.write("📁 Current Directory:", BASE_DIR)
