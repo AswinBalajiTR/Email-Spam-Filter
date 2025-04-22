@@ -1,10 +1,5 @@
-# ---- Auto Dependency Handling (Streamlit Cloud Safe) ----
-try:
-    import joblib
-except ImportError:
-    import subprocess
-    subprocess.check_call(["pip", "install", "joblib"])
-    import joblib
+import joblib
+import sklearn
 
 import nltk
 nltk.download('stopwords')
