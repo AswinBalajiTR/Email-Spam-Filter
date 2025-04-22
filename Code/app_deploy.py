@@ -116,7 +116,7 @@ def load_model_and_vectorizer():
 model, vectorizer = load_model_and_vectorizer()
 
 # Title and subtitle
-st.markdown("<h1 style='text-align: center;'>Neon Spam Classifier</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>Email Spam Filter</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; color:#caf0f8;'>Enter or copy a message below to classify it as spam or not spam.</p>", unsafe_allow_html=True)
 
 # Input area
