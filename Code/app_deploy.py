@@ -1,6 +1,19 @@
 import joblib
 import sklearn
 
+import os
+
+MODEL_PATH = "mlp_classifier_model.pkl"
+VECTORIZER_PATH = "vectorizer.pkl"
+
+if not os.path.exists(MODEL_PATH) or not os.path.exists(VECTORIZER_PATH):
+    st.error("🚫 Model or vectorizer file not found. Please upload both `spam_classifier.pkl` and `vectorizer.pkl`.")
+    st.stop()
+
+model = joblib.load(MODEL_PATH)
+vectorizer = joblib.load(VECTORIZER_PATH)
+
+
 import nltk
 nltk.download('stopwords')
 nltk.download('wordnet')
