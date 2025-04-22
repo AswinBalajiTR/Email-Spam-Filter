@@ -1,43 +1,10 @@
-import streamlit as st
-import joblib
-import os
-import re
 import nltk
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-
-import os
-import streamlit as st
 import joblib
-
-# Set correct path assuming app_deploy.py is inside "Code" and model is also there
-
-BASE_DIR = os.path.dirname(__file__)
-model = joblib.load(os.path.join(BASE_DIR, "mlp_classifier_model.pkl"))
-vectorizer = joblib.load(os.path.join(BASE_DIR, "vectorizer.pkl"))
-
-# Logging to debug
-st.write("📁 Current Directory:", BASE_DIR)
-st.write("📄 Files:", os.listdir(BASE_DIR))
-
-# File check
-if not os.path.exists(MODEL_PATH) or not os.path.exists(VECTORIZER_PATH):
-    st.error("🚫 MLP model or vectorizer file not found. Please check file names or paths.")
-    st.stop()
-
-# Load model & vectorizer
-model = joblib.load(MODEL_PATH)
-vectorizer = joblib.load(VECTORIZER_PATH)
-
-
-import nltk
-nltk.download('stopwords')
-nltk.download('wordnet')
-
+import sklearn
 import streamlit as st
 import re
 import time
-import nltk
+import os
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 
@@ -139,8 +106,11 @@ def preprocess_text(text):
 
 @st.cache_resource
 def load_model_and_vectorizer():
-    model = joblib.load("mlp_classifier_model.pkl")
-    vectorizer = joblib.load("vectorizer.pkl")
+    BASE_DIR = os.path.dirname(__file__)
+    model_path = os.path.join(BASE_DIR, "mlp_classifier_model.pkl")
+    vectorizer_path = os.path.join(BASE_DIR, "vectorizer.pkl")
+    model = joblib.load(model_path)
+    vectorizer = joblib.load(vectorizer_path)
     return model, vectorizer
 
 model, vectorizer = load_model_and_vectorizer()
